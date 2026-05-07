@@ -1,0 +1,18 @@
+require('dotenv').config();
+const app = require('./app');
+const connectDB = require('./config/db');
+
+const PORT = process.env.PORT || 5000;
+
+// Connect to MongoDB using the config file
+connectDB()
+  .then(() => {
+    // Start server after successful DB connection
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error('Failed to initialize application:', err);
+    process.exit(1);
+  });
