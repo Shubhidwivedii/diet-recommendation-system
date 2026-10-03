@@ -94,7 +94,7 @@ function GetRecommendation({ setResult }) {
               <div><label style={labelStyle}>Age</label><input style={inputStyle} name="Age" value={form.Age} onChange={handle} placeholder="e.g. 25" type="number" /></div>
               <div><label style={labelStyle}>Gender</label>
                 <select style={inputStyle} name="Gender" value={form.Gender} onChange={handle}>
-                  <option>Male</option><option>Female</option><option>Other</option>
+                  <option>Male</option><option>Female</option>
                 </select>
               </div>
               <div><label style={labelStyle}>Weight (kg)</label><input style={inputStyle} name="Weight_kg" value={form.Weight_kg} onChange={handle} placeholder="e.g. 70" type="number" /></div>
@@ -114,12 +114,12 @@ function GetRecommendation({ setResult }) {
             <div style={gridStyle}>
               <div><label style={labelStyle}>Activity Level</label>
                 <select style={inputStyle} name="Physical_Activity_Level" value={form.Physical_Activity_Level} onChange={handle}>
-                  <option>Sedentary</option><option>Light</option><option>Moderate</option><option>Active</option><option>Very Active</option>
+                  <option>Sedentary</option><option>Moderate</option><option>Active</option>
                 </select>
               </div>
               <div><label style={labelStyle}>Preferred Cuisine</label>
                 <select style={inputStyle} name="Preferred_Cuisine" value={form.Preferred_Cuisine} onChange={handle}>
-                  <option>Indian</option><option>Mediterranean</option><option>Western</option><option>Asian</option>
+                  <option>Indian</option><option>Chinese</option><option>Italian</option><option>Mexican</option>
                 </select>
               </div>
               <div><label style={labelStyle}>Weekly Exercise Hours</label><input style={inputStyle} name="Weekly_Exercise_Hours" value={form.Weekly_Exercise_Hours} onChange={handle} placeholder="e.g. 5" type="number" /></div>
@@ -135,7 +135,7 @@ function GetRecommendation({ setResult }) {
             <div style={gridStyle}>
               <div><label style={labelStyle}>Disease Type</label>
                 <select style={inputStyle} name="Disease_Type" value={form.Disease_Type} onChange={handle}>
-                  <option>None</option><option>Diabetes</option><option>Hypertension</option><option>Obesity</option><option>Heart Disease</option>
+                  <option>None</option><option>Diabetes</option><option>Hypertension</option><option>Obesity</option>
                 </select>
               </div>
               <div><label style={labelStyle}>Severity</label>
@@ -157,16 +157,16 @@ function GetRecommendation({ setResult }) {
             <div style={gridStyle}>
               <div><label style={labelStyle}>Dietary Restrictions</label>
                 <select style={inputStyle} name="Dietary_Restrictions" value={form.Dietary_Restrictions} onChange={handle}>
-                  <option>None</option><option>Vegetarian</option><option>Vegan</option><option>Gluten-Free</option>
+                  <option>None</option><option>Low_Sugar</option><option>Low_Sodium</option>
                 </select>
               </div>
               <div><label style={labelStyle}>Allergies</label>
                 <select style={inputStyle} name="Allergies" value={form.Allergies} onChange={handle}>
-                  <option>None</option><option>Nuts</option><option>Dairy</option><option>Gluten</option><option>Seafood</option>
+                  <option>None</option><option>Gluten</option><option>Peanuts</option>
                 </select>
               </div>
-              <div><label style={labelStyle}>Adherence to Diet Plan (1-10)</label><input style={inputStyle} name="Adherence_to_Diet_Plan" value={form.Adherence_to_Diet_Plan} onChange={handle} placeholder="e.g. 7" type="number" min="1" max="10" /></div>
-              <div><label style={labelStyle}>Nutrient Imbalance Score (1-10)</label><input style={inputStyle} name="Dietary_Nutrient_Imbalance_Score" value={form.Dietary_Nutrient_Imbalance_Score} onChange={handle} placeholder="e.g. 2" type="number" min="1" max="10" /></div>
+              <div><label style={labelStyle}>Adherence to Diet Plan (%)</label><input style={inputStyle} name="Adherence_to_Diet_Plan" value={form.Adherence_to_Diet_Plan} onChange={handle} placeholder="e.g. 75" type="number" min="50" max="100" step="0.1" /></div>
+              <div><label style={labelStyle}>Nutrient Imbalance Score (0-5)</label><input style={inputStyle} name="Dietary_Nutrient_Imbalance_Score" value={form.Dietary_Nutrient_Imbalance_Score} onChange={handle} placeholder="e.g. 2.5" type="number" min="0" max="5" step="0.1" /></div>
             </div>
           </div>
         )}

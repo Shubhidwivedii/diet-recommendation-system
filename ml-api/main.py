@@ -8,7 +8,7 @@ Test at:   http://localhost:8000/docs
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from typing import Optional
+from typing import Literal, Optional
 import pickle
 import json
 
@@ -50,23 +50,23 @@ print(f"PGS + MLP accuracy:  {feature_config['pgs_mlp_accuracy'] * 100:.2f}%")
 # ─────────────────────────────────────────
 class UserInput(BaseModel):
     Age: float
-    Gender: str                                      # "Male" or "Female"
+    Gender: Literal["Male", "Female"]
     Weight_kg: float
     Height_cm: float
     BMI: float
-    Disease_Type: Optional[str] = "None"             # "Diabetes" / "Hypertension" / "Obesity" / "None"
-    Severity: str                                    # "Mild" / "Moderate" / "Severe"
-    Physical_Activity_Level: str                     # "Sedentary" / "Moderate" / "Active"
+    Disease_Type: Optional[Literal["Diabetes", "Hypertension", "None", "Obesity"]] = "None"
+    Severity: Literal["Mild", "Moderate", "Severe"]
+    Physical_Activity_Level: Literal["Active", "Moderate", "Sedentary"]
     Daily_Caloric_Intake: float
     Cholesterol_mgdL: float                          # Node sends as Cholesterol_mgdL
     Blood_Pressure_mmHg: float
     Glucose_mgdL: float                              # Node sends as Glucose_mgdL
-    Dietary_Restrictions: Optional[str] = "None"    # "Low_Sugar" / "Low_Sodium" / "None"
-    Allergies: Optional[str] = "None"               # "Gluten" / "Peanuts" / "None"
-    Preferred_Cuisine: str                           # "Indian" / "Chinese" / "Italian" / "Mexican"
+    Dietary_Restrictions: Optional[Literal["Low_Sodium", "Low_Sugar", "None"]] = "None"
+    Allergies: Optional[Literal["Gluten", "None", "Peanuts"]] = "None"
+    Preferred_Cuisine: Literal["Chinese", "Indian", "Italian", "Mexican"]
     Weekly_Exercise_Hours: float
-    Adherence_to_Diet_Plan: Optional[float] = 0.5
-    Dietary_Nutrient_Imbalance_Score: Optional[float] = 5.0
+    Adherence_to_Diet_Plan: Optional[float] = 75.0
+    Dietary_Nutrient_Imbalance_Score: Optional[float] = 2.5
 
 
 # ─────────────────────────────────────────

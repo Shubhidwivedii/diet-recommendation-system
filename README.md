@@ -78,8 +78,12 @@ mongod --dbpath="D:\mongodb-data\db"
 ### Step 2 — Start FastAPI ML API
 ```bash
 cd diet-recommendation-system/ml-api
-uvicorn main:app --reload
+.venv\Scripts\python -m pip install -r requirements.txt
+.venv\Scripts\python -m uvicorn main:app --reload --port 8000
 ```
+
+Create `.venv` first with an installed Python 3.12 interpreter if it is not
+already present.
 
 ### Step 3 — Install Backend Dependencies
 ```bash
@@ -98,6 +102,15 @@ npm start
 ```
 
 Server runs on: `http://localhost:5000`
+
+### Step 6 — Start Frontend
+```bash
+cd ../frontend
+npm install
+npm start
+```
+
+Frontend runs on: `http://localhost:3000`
 
 ---
 
@@ -125,8 +138,8 @@ Receives user health input, calls ML API, generates 7-day meal plan.
   "Allergies": "None",
   "Preferred_Cuisine": "Indian",
   "Weekly_Exercise_Hours": 5,
-  "Adherence_to_Diet_Plan": 7,
-  "Dietary_Nutrient_Imbalance_Score": 2
+  "Adherence_to_Diet_Plan": 75,
+  "Dietary_Nutrient_Imbalance_Score": 2.5
 }
 ```
 

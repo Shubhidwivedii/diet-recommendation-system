@@ -32,8 +32,8 @@ DEFAULTS = {
     "Disease_Type": "None",
     "Allergies": "None",
     "Dietary_Restrictions": "None",
-    "Adherence_to_Diet_Plan": 0.5,
-    "Dietary_Nutrient_Imbalance_Score": 5.0,
+    "Adherence_to_Diet_Plan": 75.0,
+    "Dietary_Nutrient_Imbalance_Score": 2.5,
 }
 
 

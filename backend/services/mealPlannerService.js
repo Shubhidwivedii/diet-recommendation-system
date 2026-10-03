@@ -10,9 +10,12 @@ const generateWeeklyPlan = async (dietType) => {
   const normalizedDietType = (dietType || '').trim();
 
   // Query foods directly by meal_type in lowercase (stored lowercase via Mongoose setter)
-  const breakfastFoods = await Food.find({ diet_type: normalizedDietType, meal_type: 'breakfast' });
-  const lunchFoods    = await Food.find({ diet_type: normalizedDietType, meal_type: 'lunch' });
-  const dinnerFoods   = await Food.find({ diet_type: normalizedDietType, meal_type: 'dinner' });
+  // const breakfastFoods = await Food.find({ diet_type: normalizedDietType, meal_type: 'breakfast' });
+  // const lunchFoods    = await Food.find({ diet_type: normalizedDietType, meal_type: 'lunch' });
+  // const dinnerFoods   = await Food.find({ diet_type: normalizedDietType, meal_type: 'dinner' });
+const breakfastFoods = await Food.find({ diet_type: normalizedDietType, meal_type: 'breakfast' });
+const lunchFoods    = await Food.find({ diet_type: normalizedDietType, meal_type: 'lunch' });
+const dinnerFoods   = await Food.find({ diet_type: normalizedDietType, meal_type: 'dinner' });
 
   // Ensure there are foods available for all meal types
   if (breakfastFoods.length === 0) throw new Error(`No breakfast options found in DB for diet type: ${dietType}`);
@@ -46,16 +49,21 @@ const generateWeeklyPlan = async (dietType) => {
     const lunch = getRandomFood(lunchFoods, prevLunch);
     const dinner = getRandomFood(dinnerFoods, prevDinner);
 
+    // weeklyPlan[`day_${i}`] = {
+    //   // breakfast: { food_name: breakfast.food_name, calories: breakfast.calories },
+    //   // lunch: { food_name: lunch.food_name, calories: lunch.calories },
+    //   // dinner: { food_name: dinner.food_name, calories: dinner.calories }
+    // };
     weeklyPlan[`day_${i}`] = {
-      breakfast: { food_name: breakfast.food_name, calories: breakfast.calories },
-      lunch: { food_name: lunch.food_name, calories: lunch.calories },
-      dinner: { food_name: dinner.food_name, calories: dinner.calories }
-    };
+ breakfast: { food_name: breakfast.food_name, calories: breakfast.calories },
+lunch: { food_name: lunch.food_name, calories: lunch.calories },
+dinner: { food_name: dinner.food_name, calories: dinner.calories }
+};
 
     // Store the selected meals to prevent consecutive day repeats
-    prevBreakfast = breakfast.food_name;
-    prevLunch = lunch.food_name;
-    prevDinner = dinner.food_name;
+   prevBreakfast = breakfast.food_name;
+prevLunch = lunch.food_name;
+prevDinner = dinner.food_name;
   }
 
   return weeklyPlan;
